@@ -12,7 +12,6 @@ import {
   Code,
   Shield,
   Zap,
-  Users,
   Star,
   ExternalLink,
   Globe,
