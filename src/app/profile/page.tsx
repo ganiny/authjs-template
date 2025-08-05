@@ -9,7 +9,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Mail, MapPin, Shield, User } from "lucide-react";
+import { Calendar, Mail, Shield, User } from "lucide-react";
 import { ProfileActions } from "@/components/profile-actions";
 import Link from "next/link";
 

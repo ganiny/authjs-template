@@ -131,11 +131,6 @@ The template comes pre-configured with three OAuth providers:
 
 1. **Local PostgreSQL**
 
-   ```bash
-   # Install PostgreSQL locally or use Docker
-   docker run --name postgres -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres
-   ```
-
 2. **Cloud Database (Recommended)**
    - [Vercel Postgres](https://vercel.com/docs/storage/vercel-postgres)
    - [Supabase](https://supabase.com/)
@@ -145,28 +140,7 @@ The template comes pre-configured with three OAuth providers:
 
 ### Adding New OAuth Providers
 
-1. Install the provider package:
 
-   ```bash
-   npm install @auth/providers/your-provider
-   ```
-
-2. Add to `src/auth.config.ts`:
-
-   ```typescript
-   import YourProvider from "@auth/providers/your-provider";
-
-   export default {
-     providers: [
-       // ... existing providers
-       YourProvider({
-         clientId: process.env.YOUR_PROVIDER_CLIENT_ID,
-         clientSecret: process.env.YOUR_PROVIDER_CLIENT_SECRET,
-       }),
-     ],
-     // ... rest of config
-   };
-   ```
 
 ### Customizing the UI
 
@@ -208,19 +182,7 @@ The template works with any platform that supports Next.js:
 - [shadcn/ui Components](https://ui.shadcn.com)
 - [Tailwind CSS](https://tailwindcss.com/docs)
 
-## 🤝 Contributing
 
-We welcome contributions! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
@@ -230,14 +192,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [shadcn/ui](https://ui.shadcn.com/) - Beautiful UI components
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 
-## 📞 Support
 
-If you have any questions or need help:
-
-- 📖 Check the [documentation](/docs)
-- 🐛 Report bugs on [GitHub Issues](https://github.com/your-username/authjs-template/issues)
-- 💬 Join our [Discord community](https://discord.gg/your-community)
-
----
-
-Made with ❤️ by the Auth.js Template team
+Made with ❤️ by Mohamed Abubakr

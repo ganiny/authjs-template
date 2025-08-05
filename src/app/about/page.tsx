@@ -14,7 +14,6 @@ import {
   Zap,
   Users,
   Star,
-  Github,
   ExternalLink,
   Globe,
   Lightbulb,
@@ -22,6 +21,7 @@ import {
   Award,
 } from "lucide-react";
 import Link from "next/link";
+import { FaGithub } from "react-icons/fa";
 
 export default function AboutPage() {
   return (
@@ -49,7 +49,7 @@ export default function AboutPage() {
           <CardHeader className="text-center">
             <CardTitle className="flex items-center justify-center gap-2">
               <Target className="w-5 h-5" />
-              Our Mission
+              Target
             </CardTitle>
             <CardDescription>
               Empowering developers to build secure, scalable applications with
@@ -59,17 +59,16 @@ export default function AboutPage() {
           <CardContent>
             <div className="text-center space-y-4">
               <p className="text-lg leading-relaxed">
-                We believe that every developer should have access to a solid
-                foundation for building web applications. This template combines
+                {`This template combines
                 the best practices from the modern web development ecosystem to
                 provide you with a starting point that's both powerful and easy
-                to understand.
+                to understand.`}
               </p>
               <p className="text-muted-foreground">
-                Whether you're building a SaaS application, a personal project,
+                {`Whether you're building a SaaS application, a personal project,
                 or learning modern web development, this template gives you
                 everything you need to get started quickly and scale
-                confidently.
+                confidently.`}
               </p>
             </div>
           </CardContent>
@@ -242,7 +241,7 @@ export default function AboutPage() {
                   <Badge variant="outline">ESLint</Badge>
                   <Badge variant="outline">Turbopack</Badge>
                   <Badge variant="outline">Lucide Icons</Badge>
-                  <Badge variant="outline">Sonner</Badge>
+                  <Badge variant="outline">React Icons</Badge>
                 </div>
               </div>
             </div>
@@ -318,31 +317,22 @@ export default function AboutPage() {
 
         {/* Community */}
         <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Users className="w-5 h-5" />
-              Join the Community
-            </CardTitle>
-            <CardDescription>
-              Connect with other developers and contribute to the project
-            </CardDescription>
-          </CardHeader>
           <CardContent>
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-3">
                 <h3 className="font-semibold">Get Involved</h3>
                 <p className="text-sm text-muted-foreground">
-                  We welcome contributions from the community! Whether it's bug
+                  {`I welcome contributions from all developers! Whether it's bug
                   reports, feature requests, or code contributions, every bit
-                  helps.
+                  helps.`}
                 </p>
                 <div className="flex gap-2">
                   <Button variant="outline" size="sm" asChild>
                     <Link
-                      href="https://github.com/your-repo"
+                      href="https://github.com/ganiny/authjs-template"
                       className="flex items-center gap-2"
                     >
-                      <Github className="w-4 h-4" />
+                      <FaGithub className="w-4 h-4" />
                       GitHub
                     </Link>
                   </Button>
@@ -383,7 +373,7 @@ export default function AboutPage() {
           <Card>
             <CardContent className="pt-6">
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">3+</div>
+                <div className="text-2xl font-bold text-primary">3</div>
                 <div className="text-sm text-muted-foreground">
                   Auth Providers
                 </div>
@@ -429,12 +419,12 @@ export default function AboutPage() {
               <Button asChild>
                 <Link href="/docs">
                   <Award className="w-4 h-4 mr-2" />
-                  View Documentation
+                  View Docs
                 </Link>
               </Button>
               <Button variant="outline" asChild>
-                <Link href="https://github.com/your-repo">
-                  <Github className="w-4 h-4 mr-2" />
+                <Link href="https://github.com/ganiny/authjs-template">
+                  <FaGithub className="w-4 h-4 mr-2" />
                   Get the Code
                 </Link>
               </Button>

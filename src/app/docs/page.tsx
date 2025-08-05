@@ -5,7 +5,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   BookOpen,
@@ -14,12 +13,12 @@ import {
   Shield,
   Palette,
   Zap,
-  Github,
   ExternalLink,
   CheckCircle,
-  ArrowRight,
 } from "lucide-react";
+import { CopyableCode } from "@/components/copyable-code";
 import Link from "next/link";
+import { FaGithub } from "react-icons/fa";
 
 export default function DocsPage() {
   return (
@@ -55,36 +54,28 @@ export default function DocsPage() {
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
                 <h3 className="font-semibold">1. Clone the Repository</h3>
-                <div className="bg-muted rounded-lg p-3 font-mono text-sm">
-                  git clone [repository-url]
-                </div>
+                <CopyableCode code="git clone https://github.com/ganiny/authjs-template.git" />
               </div>
               <div className="space-y-2">
                 <h3 className="font-semibold">2. Install Dependencies</h3>
-                <div className="bg-muted rounded-lg p-3 font-mono text-sm">
-                  npm install
-                </div>
+                <CopyableCode code="npm install" />
               </div>
               <div className="space-y-2">
                 <h3 className="font-semibold">3. Set Up Environment</h3>
-                <div className="bg-muted rounded-lg p-3 font-mono text-sm">
-                  cp .env.example .env.local
-                </div>
+                <CopyableCode code="cp .env.example .env.local" />
               </div>
               <div className="space-y-2">
                 <h3 className="font-semibold">4. Run Development Server</h3>
-                <div className="bg-muted rounded-lg p-3 font-mono text-sm">
-                  npm run dev
-                </div>
+                <CopyableCode code="npm run dev" />
               </div>
             </div>
             <div className="pt-4 border-t">
               <Button asChild>
                 <Link
-                  href="https://github.com/your-repo"
+                  href="https://github.com/ganiny/authjs-template"
                   className="flex items-center gap-2"
                 >
-                  <Github className="w-4 h-4" />
+                  <FaGithub className="w-4 h-4" />
                   View on GitHub
                   <ExternalLink className="w-4 h-4" />
                 </Link>
@@ -247,28 +238,16 @@ export default function DocsPage() {
                 <div className="space-y-2">
                   <h3 className="font-semibold">Authentication</h3>
                   <div className="space-y-2 text-sm">
-                    <div className="bg-muted rounded-lg p-3">
-                      <code>AUTH_SECRET=your-secret-key</code>
-                    </div>
-                    <div className="bg-muted rounded-lg p-3">
-                      <code>GOOGLE_CLIENT_ID=your-google-client-id</code>
-                    </div>
-                    <div className="bg-muted rounded-lg p-3">
-                      <code>
-                        GOOGLE_CLIENT_SECRET=your-google-client-secret
-                      </code>
-                    </div>
+                    <CopyableCode code="AUTH_SECRET=your-secret-key" />
+                    <CopyableCode code="GOOGLE_CLIENT_ID=your-google-client-id" />
+                    <CopyableCode code="GOOGLE_CLIENT_SECRET=your-google-client-secret" />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <h3 className="font-semibold">Database</h3>
                   <div className="space-y-2 text-sm">
-                    <div className="bg-muted rounded-lg p-3">
-                      <code>DATABASE_URL=postgresql://...</code>
-                    </div>
-                    <div className="bg-muted rounded-lg p-3">
-                      <code>DIRECT_URL=postgresql://...</code>
-                    </div>
+                    <CopyableCode code="DATABASE_URL=postgresql://..." />
+                    <CopyableCode code="DIRECT_URL=postgresql://..." />
                   </div>
                 </div>
               </div>
