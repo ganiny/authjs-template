@@ -1,36 +1,243 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Auth.js Template
 
-## Getting Started
+A modern, production-ready Next.js template with authentication, database integration, and beautiful UI components built for developers who want to ship fast.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 🔐 **Authentication** - OAuth with Google, GitHub, and Twitter
+- 🗄️ **Database** - Prisma ORM with PostgreSQL support
+- 🎨 **UI Components** - shadcn/ui with dark/light mode
+- 📱 **Responsive Design** - Mobile-first approach
+- 🔒 **Security** - JWT sessions and protected routes
+- ⚡ **Performance** - Next.js 15 with Turbopack
+- 🛠️ **Developer Experience** - TypeScript, ESLint, hot reload
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18+
+- PostgreSQL database
+- OAuth provider accounts (Google, GitHub, Twitter)
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/your-username/authjs-template.git
+   cd authjs-template
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+
+   ```bash
+   cp .env.example .env.local
+   ```
+
+4. **Configure your environment variables**
+
+   ```env
+   # Authentication
+   AUTH_SECRET=your-secret-key-here
+
+   # OAuth Providers
+   GOOGLE_CLIENT_ID=your-google-client-id
+   GOOGLE_CLIENT_SECRET=your-google-client-secret
+   GITHUB_CLIENT_ID=your-github-client-id
+   GITHUB_CLIENT_SECRET=your-github-client-secret
+   TWITTER_CLIENT_ID=your-twitter-client-id
+   TWITTER_CLIENT_SECRET=your-twitter-client-secret
+
+   # Database
+   DATABASE_URL="postgresql://username:password@localhost:5432/database"
+   DIRECT_URL="postgresql://username:password@localhost:5432/database"
+   ```
+
+5. **Set up the database**
+
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
+
+6. **Run the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+7. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📁 Project Structure
+
+```
+authjs-template/
+├── src/
+│   ├── app/                 # Next.js App Router
+│   │   ├── api/            # API routes
+│   │   │   └── auth/       # Auth.js API routes
+│   │   ├── login/          # Login page
+│   │   ├── profile/        # Profile page
+│   │   ├── docs/           # Documentation page
+│   │   ├── about/          # About page
+│   │   └── page.tsx        # Home page
+│   ├── components/         # Reusable components
+│   │   ├── ui/            # shadcn/ui components
+│   │   ├── Header.tsx     # Navigation header
+│   │   ├── Footer.tsx     # Footer component
+│   │   └── profile-actions.tsx # Profile actions
+│   ├── auth.ts            # Auth.js configuration
+│   ├── auth.config.ts     # Auth providers
+│   └── middleware.ts      # Route protection
+├── prisma/                # Database schema & migrations
+├── public/               # Static assets
+└── package.json          # Dependencies & scripts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Configuration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Authentication Providers
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The template comes pre-configured with three OAuth providers:
 
-## Learn More
+1. **Google OAuth**
 
-To learn more about Next.js, take a look at the following resources:
+   - Go to [Google Cloud Console](https://console.cloud.google.com/)
+   - Create a new project or select existing
+   - Enable Google+ API
+   - Create OAuth 2.0 credentials
+   - Add authorized redirect URI: `http://localhost:3000/api/auth/callback/google`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **GitHub OAuth**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   - Go to [GitHub Developer Settings](https://github.com/settings/developers)
+   - Create a new OAuth App
+   - Add callback URL: `http://localhost:3000/api/auth/callback/github`
 
-## Deploy on Vercel
+3. **Twitter OAuth**
+   - Go to [Twitter Developer Portal](https://developer.twitter.com/)
+   - Create a new app
+   - Add callback URL: `http://localhost:3000/api/auth/callback/twitter`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Database Setup
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Local PostgreSQL**
+
+   ```bash
+   # Install PostgreSQL locally or use Docker
+   docker run --name postgres -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres
+   ```
+
+2. **Cloud Database (Recommended)**
+   - [Vercel Postgres](https://vercel.com/docs/storage/vercel-postgres)
+   - [Supabase](https://supabase.com/)
+   - [PlanetScale](https://planetscale.com/)
+
+## 🎨 Customization
+
+### Adding New OAuth Providers
+
+1. Install the provider package:
+
+   ```bash
+   npm install @auth/providers/your-provider
+   ```
+
+2. Add to `src/auth.config.ts`:
+
+   ```typescript
+   import YourProvider from "@auth/providers/your-provider";
+
+   export default {
+     providers: [
+       // ... existing providers
+       YourProvider({
+         clientId: process.env.YOUR_PROVIDER_CLIENT_ID,
+         clientSecret: process.env.YOUR_PROVIDER_CLIENT_SECRET,
+       }),
+     ],
+     // ... rest of config
+   };
+   ```
+
+### Customizing the UI
+
+The template uses shadcn/ui components which can be easily customized:
+
+1. **Theme Colors**: Modify `src/app/globals.css`
+2. **Component Styles**: Edit individual component files in `src/components/ui/`
+3. **Layout**: Customize `src/components/Header.tsx` and `src/components/Footer.tsx`
+
+### Adding New Pages
+
+1. Create a new directory in `src/app/`
+2. Add a `page.tsx` file
+3. Follow the existing patterns for styling and layout
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Add environment variables in Vercel dashboard
+4. Deploy!
+
+### Other Platforms
+
+The template works with any platform that supports Next.js:
+
+- Netlify
+- Railway
+- DigitalOcean App Platform
+- AWS Amplify
+
+## 📚 Documentation
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Auth.js Documentation](https://authjs.dev)
+- [Prisma Documentation](https://www.prisma.io/docs)
+- [shadcn/ui Components](https://ui.shadcn.com)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+
+## 🤝 Contributing
+
+We welcome contributions! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Next.js](https://nextjs.org/) - The React framework
+- [Auth.js](https://authjs.dev/) - Authentication for Next.js
+- [Prisma](https://www.prisma.io/) - Database toolkit
+- [shadcn/ui](https://ui.shadcn.com/) - Beautiful UI components
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+
+## 📞 Support
+
+If you have any questions or need help:
+
+- 📖 Check the [documentation](/docs)
+- 🐛 Report bugs on [GitHub Issues](https://github.com/your-username/authjs-template/issues)
+- 💬 Join our [Discord community](https://discord.gg/your-community)
+
+---
+
+Made with ❤️ by the Auth.js Template team
