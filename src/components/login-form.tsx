@@ -24,8 +24,9 @@ export function LoginForm({
                   "use server";
                   await signIn("google", { redirectTo: "/profile" });
                 }}
+                className="cursor-pointer"
               >
-                <Button type="submit" variant="outline" className="w-full">
+                <Button type="submit" variant="outline" className="w-full cursor-pointer">
                   <FcGoogle />
                 </Button>
               </form>
@@ -34,8 +35,9 @@ export function LoginForm({
                   "use server";
                   await signIn("twitter", { redirectTo: "/profile" });
                 }}
+                className="cursor-pointer"
               >
-                <Button type="submit" variant="outline" className="w-full">
+                <Button type="submit" variant="outline" className="w-full cursor-pointer">
                   <FaXTwitter />
                 </Button>
               </form>
@@ -45,7 +47,7 @@ export function LoginForm({
                   await signIn("github", { redirectTo: "/profile" });
                 }}
               >
-                <Button type="submit" variant="outline" className="w-full">
+                <Button type="submit" variant="outline" className="w-full cursor-pointer">
                   <FaGithub />
                 </Button>
               </form>

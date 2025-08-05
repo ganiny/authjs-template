@@ -7,37 +7,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Mail, Shield, User } from "lucide-react";
 import { ProfileActions } from "@/components/profile-actions";
-import Link from "next/link";
 
 export default async function ProfilePage() {
   const session = await auth();
-
-  if (!session?.user) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 text-center">
-          <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center">
-            <User className="w-8 h-8 text-muted-foreground" />
-          </div>
-          <div>
-            <h1 className="text-2xl font-bold mb-2">Not Authenticated</h1>
-            <p className="text-muted-foreground mb-4">
-              Please log in to view your profile
-            </p>
-            <Button asChild>
-              <Link href="/login">Sign In</Link>
-            </Button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  const { user } = session;
+  const user = session?.user;
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -57,11 +33,11 @@ export default async function ProfilePage() {
               <div className="flex justify-center mb-4">
                 <Avatar className="w-24 h-24">
                   <AvatarImage
-                    src={user.image || ""}
-                    alt={user.name || "User"}
+                    src={user?.image || ""}
+                    alt={user?.name || "User"}
                   />
                   <AvatarFallback className="text-2xl">
-                    {user.name
+                    {user?.name && user?.name
                       ?.split(" ")
                       .map((word) => word[0])
                       .filter(Boolean)
@@ -71,8 +47,8 @@ export default async function ProfilePage() {
                   </AvatarFallback>
                 </Avatar>
               </div>
-              <CardTitle className="text-xl">{user.name}</CardTitle>
-              <CardDescription>{user.email}</CardDescription>
+              <CardTitle className="text-xl">{user?.name}</CardTitle>
+              <CardDescription>{user?.email ? user?.email : "Not provided"}</CardDescription>
               <div className="flex justify-center mt-4">
                 <Badge variant="secondary" className="flex items-center gap-1">
                   <Shield className="w-3 h-3" />
@@ -84,13 +60,13 @@ export default async function ProfilePage() {
               <div className="flex items-center gap-3 text-sm">
                 <Mail className="w-4 h-4 text-muted-foreground" />
                 <span className="text-muted-foreground">Email:</span>
-                <span className="font-medium">{user.email}</span>
+                <span className="font-medium">{user?.email ? user?.email : "Not provided"}</span>
               </div>
-              {user.name && (
+              {user?.name && (
                 <div className="flex items-center gap-3 text-sm">
                   <User className="w-4 h-4 text-muted-foreground" />
                   <span className="text-muted-foreground">Name:</span>
-                  <span className="font-medium">{user.name}</span>
+                  <span className="font-medium">{user?.name}</span>
                 </div>
               )}
               <div className="flex items-center gap-3 text-sm">
@@ -121,7 +97,7 @@ export default async function ProfilePage() {
                     Full Name
                   </label>
                   <div className="p-3 rounded-md border bg-muted/50">
-                    {user.name || "Not provided"}
+                    {user?.name || "Not provided"}
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -129,7 +105,7 @@ export default async function ProfilePage() {
                     Email Address
                   </label>
                   <div className="p-3 rounded-md border bg-muted/50">
-                    {user.email}
+                    {user?.email || "Not provided"}
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -145,11 +121,11 @@ export default async function ProfilePage() {
                     Authentication Provider
                   </label>
                   <div className="p-3 rounded-md border bg-muted/50">
-                    {user.email?.includes("@gmail.com")
+                    {user?.email?.includes("@gmail.com")
                       ? "Google"
-                      : user.email?.includes("@github.com")
+                      : user?.email?.includes("@github.com")
                       ? "GitHub"
-                      : user.email?.includes("@twitter.com")
+                      : user?.email?.includes("@twitter.com")
                       ? "Twitter"
                       : "OAuth"}
                   </div>

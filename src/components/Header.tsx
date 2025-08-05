@@ -168,23 +168,25 @@ export function Header() {
               </Link>
             </div>
 
-            <div className="flex flex-col space-y-2 pt-4 border-t">
-              <Button
-                variant="ghost"
-                size="sm"
-                asChild
-                className="justify-start"
-              >
-                <Link
-                  href="/login"
-                  className="flex items-center gap-2"
-                  onClick={() => setMobileMenuOpen(false)}
+            {!user && (
+              <div className="flex flex-col space-y-2 pt-4 border-t">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  asChild
+                  className="justify-start"
                 >
-                  <LogIn className="h-4 w-4" />
-                  Login
-                </Link>
-              </Button>
-            </div>
+                  <Link
+                    href="/login"
+                    className="flex items-center gap-2"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <LogIn className="h-4 w-4" />
+                    Login
+                  </Link>
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       )}
