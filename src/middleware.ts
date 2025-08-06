@@ -30,5 +30,7 @@ export default auth((req) => {
 
 // Optionally configure middleware to match specific routes
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+  ],
 };
