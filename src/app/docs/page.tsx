@@ -248,6 +248,13 @@ export default function DocsPage() {
                   <div className="space-y-2 text-sm">
                     <CopyableCode code="DATABASE_URL=postgresql://..." />
                     <CopyableCode code="DIRECT_URL=postgresql://..." />
+                    <div className="text-xs text-muted-foreground pt-2">
+                      <strong>Note:</strong> Most cloud database providers will
+                      give you a special connection string for Prisma ORM. Make
+                      sure to copy this connection string into your{" "}
+                      <code>.env</code> file as <code>DATABASE_URL</code> (and{" "}
+                      <code>DIRECT_URL</code> if needed).
+                    </div>
                   </div>
                 </div>
               </div>

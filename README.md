@@ -136,11 +136,11 @@ The template comes pre-configured with three OAuth providers:
    - [Supabase](https://supabase.com/)
    - [PlanetScale](https://planetscale.com/)
 
+> **Note:** Most cloud database providers will give you a special connection string for Prisma ORM. Make sure to copy this connection string into your `.env` file as `DATABASE_URL` (and `DIRECT_URL` if needed). This allows Prisma to connect to your cloud database correctly.
+
 ## 🎨 Customization
 
 ### Adding New OAuth Providers
-
-
 
 ### Customizing the UI
 
@@ -182,8 +182,6 @@ The template works with any platform that supports Next.js:
 - [shadcn/ui Components](https://ui.shadcn.com)
 - [Tailwind CSS](https://tailwindcss.com/docs)
 
-
-
 ## 🙏 Acknowledgments
 
 - [Next.js](https://nextjs.org/) - The React framework
@@ -191,6 +189,5 @@ The template works with any platform that supports Next.js:
 - [Prisma](https://www.prisma.io/) - Database toolkit
 - [shadcn/ui](https://ui.shadcn.com/) - Beautiful UI components
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-
 
 Made with ❤️ by Mohamed Abubakr
